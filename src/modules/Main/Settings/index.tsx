@@ -93,8 +93,6 @@ export const Settings = () => {
       </Stack>
 
       <ConfirmModal
-        fullWidth
-        maxWidth  = "xs"
         open      = {isConfirmSignOutModalOpen}
         title     = "Sign out"
         message   = "Are you sure you want to sign out?"
@@ -103,8 +101,6 @@ export const Settings = () => {
       />
 
       <ConfirmModal
-        fullWidth
-        maxWidth  = "xs"
         open      = {isConfirmDeleteModalOpen}
         title     = "Delete account"
         message   = "Are you sure you want to delete your account?"

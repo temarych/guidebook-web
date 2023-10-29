@@ -10,6 +10,10 @@ export const getDesignTokens = (mode: PaletteMode) => createTheme({
   components: {
     MuiButton: {
       styleOverrides: {
+        sizeLarge: {
+          paddingTop   : '0.6rem',
+          paddingBottom: '0.6rem',
+        },
         contained: {
           boxShadow: 'none',
           ':hover': {
@@ -25,6 +29,14 @@ export const getDesignTokens = (mode: PaletteMode) => createTheme({
           ':hover': {
             boxShadow: 'none'
           }
+        }
+      }
+    },
+    MuiDialog: {
+      styleOverrides: {
+        paper: {
+          margin: '1rem',
+          width : '100%'
         }
       }
     }
