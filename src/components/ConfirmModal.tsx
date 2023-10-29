@@ -25,9 +25,15 @@ export const ConfirmModal = ({
   onConfirm,
   ...props
 }: ConfirmModalProps) => (
-  <Dialog {...props} onClose={onCancel}>
+  <Dialog {...props} onClose={onCancel} PaperProps={{ variant: 'outlined' }}>
     <Header variant="outlined">
-      <Stack direction="row" alignItems="center" justifyContent="space-between" px={2} py={1}>
+      <Stack
+        direction      = "row"
+        alignItems     = "center"
+        justifyContent = "space-between"
+        px             = {2}
+        py             = {1.5}
+      >
         <Typography variant="h6">
           {title}
         </Typography>

@@ -1,15 +1,15 @@
-import { useState }   from 'react';
+import { useState }     from 'react';
 import {
   Dialog,
   DialogProps,
   Stack,
   Typography,
   styled,
-}                     from '@mui/material';
-import { IGuide }     from '@typings/guide';
-import { IStep }      from '@typings/step';
-import { ControlBar } from './ControlBar';
-import { Header }     from './Header';
+}                       from '@mui/material';
+import { IGuide }       from '@typings/guide';
+import { IStep }        from '@typings/step';
+import { ControlBar }   from './ControlBar';
+import { DialogHeader } from './DialogHeader';
 
 export interface PlayDialogProps extends Omit<DialogProps, 'fullScreen' | 'onClose' | 'maxWidth'> {
   steps   : IStep[];
@@ -30,7 +30,7 @@ export const PlayDialog = ({
 
   return (
     <Dialog {...props} fullScreen PaperProps={{ elevation: 0 }}>
-      <Header onClose={props.onClose} />
+      <DialogHeader onClose={props.onClose} />
 
       <Wrapper>
         <Container>

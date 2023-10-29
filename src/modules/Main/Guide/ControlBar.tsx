@@ -51,7 +51,7 @@ const StyledMobileStepper = styled(MobileStepper)`
 `;
 
 const Placeholder = styled('div')`
-  height: var(--navbar-height);
+  height: 4rem;
 `;
 
 const Wrapper = styled(Paper)`
@@ -63,7 +63,7 @@ const Wrapper = styled(Paper)`
   left          : 0;
   right         : 0;
   bottom        : 0;
-  height        : var(--navbar-height);
+  height        : 4rem;
   display       : flex;
   flex-direction: column;
   align-items   : center;

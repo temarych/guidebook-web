@@ -28,7 +28,11 @@ export const FavoriteButton = ({
   );
 
   return (
-    <IconButton size="large" onClick={handleToggleFavorite}>
+    <IconButton
+      size    = "large"
+      color   = {isFavorite ? 'error' : 'default'}
+      onClick = {handleToggleFavorite}
+    >
       {isFavorite ? (
         <Favorite sx={{ fontSize: '1.9rem' }} />
       ) : (

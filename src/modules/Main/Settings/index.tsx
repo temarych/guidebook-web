@@ -1,6 +1,7 @@
 import {
   Avatar,
   Button,
+  ButtonGroup,
   Divider,
   List,
   Paper,
@@ -71,7 +72,7 @@ export const Settings = () => {
           </List>
         </SectionWrapper>
 
-        <Stack spacing={2}>
+        <ButtonGroup orientation="vertical">
           <Button
             variant = "outlined"
             size    = "large"
@@ -88,7 +89,7 @@ export const Settings = () => {
           >
             Delete account
           </Button>
-        </Stack>
+        </ButtonGroup>
       </Stack>
 
       <ConfirmModal

@@ -19,7 +19,7 @@ const Wrapper = styled('div')`
   position      : fixed;
   left          : ${({ theme }) => theme.spacing(2)};
   right         : ${({ theme }) => theme.spacing(2)};
-  top           : ${({ theme }) => `calc(var(--header-height) + ${theme.spacing(2)})`};
+  top           : ${({ theme }) => theme.spacing(2)};
   bottom        : ${({ theme }) => `calc(var(--navbar-height) + ${theme.spacing(2)})`};
   display       : flex;
   flex-direction: column;
