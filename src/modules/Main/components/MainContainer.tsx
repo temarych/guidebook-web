@@ -10,14 +10,16 @@ export const MainContainer = ({
   title,
   children
 }: MainContainerProps) => (
-  <Stack px={2} py={4} spacing={4}>
-    {title && (
-      <Typography variant="h5" fontWeight="bold">
-        {title}
-      </Typography>
-    )}
-    <Stack>
-      {children}
+  <Stack px={2} py={4} alignItems="center">
+    <Stack spacing={4} width="100%" maxWidth="var(--main-max-width)">
+      {title && (
+        <Typography variant="h5" fontWeight="bold">
+          {title}
+        </Typography>
+      )}
+      <Stack>
+        {children}
+      </Stack>
     </Stack>
   </Stack>
 );

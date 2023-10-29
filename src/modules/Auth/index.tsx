@@ -1,12 +1,28 @@
 import { Outlet } from 'react-router-dom';
-import { Stack }  from '@mui/material';
-import { Logo }   from '@components/Logo';
+import {
+  Card,
+  Stack,
+  useMediaQuery,
+  useTheme,
+}                 from '@mui/material';
 
-export const Auth = () => (
-  <Stack px={2} py={4} spacing={6}>
-    <Stack alignItems="center">
-      <Logo />
+export const Auth = () => {
+  const theme    = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  return (
+    <Stack height="100vh" width="100%" p={[0, 3]}>
+      <Card
+        elevation = {isMobile ? 0: 1}
+        sx        = {{
+          maxWidth: ['unset', '25rem'],
+          margin  : [0, 'auto'],
+          width   : '100%',
+          overflow: 'visible'
+        }}
+      >
+        <Outlet />
+      </Card>
     </Stack>
-    <Outlet />
-  </Stack>
-);
+  );
+};

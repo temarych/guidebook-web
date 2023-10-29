@@ -11,7 +11,7 @@ import { IStep }      from '@typings/step';
 import { ControlBar } from './ControlBar';
 import { Header }     from './Header';
 
-export interface PlayDialogProps extends Omit<DialogProps, 'fullScreen' | 'onClose'> {
+export interface PlayDialogProps extends Omit<DialogProps, 'fullScreen' | 'onClose' | 'maxWidth'> {
   steps   : IStep[];
   guide   : IGuide;
   onClose?: () => void;
@@ -32,22 +32,24 @@ export const PlayDialog = ({
     <Dialog {...props} fullScreen PaperProps={{ elevation: 0 }}>
       <Header onClose={props.onClose} />
 
-      <Stack px={2} py={4} spacing={4} flex={1} overflow="scroll">
-        <Image src={step.image} />
-  
-        <Stack spacing={1}>
-          <Typography variant="body2">
-            {`${guide.emoji} ${guide.title}`}
+      <Wrapper>
+        <Container>
+          <Image src={step.image} />
+    
+          <Stack spacing={1}>
+            <Typography variant="body2">
+              {`${guide.emoji} ${guide.title}`}
+            </Typography>
+            <Typography variant="h6">
+              {step.title}
+            </Typography>
+          </Stack>
+    
+          <Typography variant="body1">
+            {step.description}
           </Typography>
-          <Typography variant="h6">
-            {step.title}
-          </Typography>
-        </Stack>
-  
-        <Typography variant="body1">
-          {step.description}
-        </Typography>
-      </Stack>
+        </Container>
+      </Wrapper>
 
       <ControlBar
         stepIndex  = {stepIndex}
@@ -65,4 +67,24 @@ const Image = styled('img')`
   align-self   : center;
   border-radius: 1rem;
   object-fit   : cover;
+`;
+
+const Wrapper = styled('div')`
+  display       : flex;
+  flex-direction: column;
+  align-items   : center;
+  flex          : 1;
+  overflow      : scroll;
+  padding-left  : ${({ theme }) => theme.spacing(2)};
+  padding-right : ${({ theme }) => theme.spacing(2)};
+  padding-top   : ${({ theme }) => theme.spacing(4)};
+  padding-bottom: ${({ theme }) => theme.spacing(4)};
+`;
+
+const Container = styled('div')`
+  display       : flex;
+  flex-direction: column;
+  width         : 100%;
+  max-width     : var(--main-max-width);
+  gap           : ${({ theme }) => theme.spacing(4)};
 `;
