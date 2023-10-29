@@ -18,7 +18,7 @@ export const NavBar = () => {
     <>
       <Placeholder />
       <Wrapper variant="outlined">
-        <BottomNavigation showLabels value={pathname}>
+        <StyledBottomNavigation showLabels value={pathname}>
           <BottomNavigationAction
             component = {Link}
             to        = "/"
@@ -40,24 +40,32 @@ export const NavBar = () => {
             label     = "Settings"
             icon      = {<Settings />}
           />
-        </BottomNavigation>
+        </StyledBottomNavigation>
       </Wrapper>
     </>
   );
 };
 
 const Placeholder = styled('div')`
-  height: 56px;
+  height: var(--navbar-height);
 `;
 
 const Wrapper = styled(Paper)`
-  position     : fixed;
-  bottom       : 0;
-  left         : 0;
-  right        : 0;
-  border-left  : 0;
-  border-right : 0;
-  border-bottom: 0;
-  border-radius: 0;
-  z-index      : 1000;
+  position      : fixed;
+  bottom        : 0;
+  left          : 0;
+  right         : 0;
+  border-left   : 0;
+  border-right  : 0;
+  border-bottom : 0;
+  border-radius : 0;
+  z-index       : 1000;
+  display       : flex;
+  flex-direction: column;
+  align-items   : center;
+`;
+
+const StyledBottomNavigation = styled(BottomNavigation)`
+  width    : 100%;
+  max-width: var(--main-max-width);
 `;

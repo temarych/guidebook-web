@@ -13,7 +13,7 @@ export const Header = () => (
 );
 
 const Placeholder = styled('div')`
-  height: ${({ theme }) => theme.spacing(8)};
+  height: var(--header-height);
 `;
 
 const Wrapper = styled(Paper)`
@@ -24,7 +24,7 @@ const Wrapper = styled(Paper)`
   display       : flex;
   flex-direction: column;
   align-items   : center;
-  height        : ${({ theme }) => theme.spacing(8)};
+  height        : var(--header-height);
   padding-left  : ${({ theme }) => theme.spacing(2)};
   padding-right : ${({ theme }) => theme.spacing(2)};
   border-top    : 0;
@@ -39,7 +39,7 @@ const Container = styled('div')`
   flex-direction : row;
   align-items    : center;
   justify-content: space-between;
-  max-width      : 80rem;
   width          : 100%;
+  max-width      : var(--main-max-width);
   height         : 100%;
 `;

@@ -23,6 +23,7 @@ import { useDisclosure }    from '@hooks/useDisclosure';
 import { UserTag }          from '@components/UserTag';
 import { Loader }           from '@components/Loader';
 import { MainContainer }    from '../components/MainContainer';
+import { MainMask }         from '../components/MainMask';
 import { FavoriteButton }   from './FavoriteButton';
 import { PlayDialog }       from './PlayDialog';
 
@@ -84,19 +85,21 @@ export const Guide = () => {
         </Typography>
       </Stack>
 
-      <PlayButton
-        color    = "primary"
-        disabled = {!steps.length}
-        onClick  = {handlePlayGuide}
-      >
-        <PlayArrowRounded fontSize="large" />
-      </PlayButton>
+      <MainMask>
+        <PlayButton
+          color    = "primary"
+          disabled = {!steps.length}
+          onClick  = {handlePlayGuide}
+        >
+          <PlayArrowRounded fontSize="large" />
+        </PlayButton>
+      </MainMask>
 
       <PlayDialog
-        open    = {isPlayDialogOpen}
-        guide   = {guide}
-        steps   = {steps}
-        onClose = {playDialogHandlers.close}
+        open     = {isPlayDialogOpen}
+        guide    = {guide}
+        steps    = {steps}
+        onClose  = {playDialogHandlers.close}
       />
     </MainContainer>
   );
@@ -111,7 +114,7 @@ const Image = styled('img')`
 `;
 
 const PlayButton = styled(Fab)`
-  position: fixed;
-  right   : 1rem;
-  bottom  : calc(56px + 1rem);
+  position: absolute;
+  right   : 0;
+  bottom  : 0;
 `;

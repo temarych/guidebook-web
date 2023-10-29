@@ -1,6 +1,6 @@
 import { useMemo }                                   from 'react';
 import { RouterProvider, createBrowserRouter }       from 'react-router-dom';
-import { CssBaseline, ThemeProvider, useMediaQuery } from '@mui/material';
+import { CssBaseline, GlobalStyles, ThemeProvider, useMediaQuery } from '@mui/material';
 import { useMode }                                   from '@hooks/useMode';
 import { Main }                                      from '@modules/Main';
 import { Home }                                      from '@modules/Main/Home';
@@ -47,6 +47,15 @@ export const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <GlobalStyles
+        styles={{
+          body: {
+            '--main-max-width': '30rem',
+            '--header-height' : '4rem',
+            '--navbar-height' : '56px'
+          }
+        }}
+      />
       <RouterProvider router={router} />
     </ThemeProvider>
   );
