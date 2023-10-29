@@ -34,6 +34,9 @@ export const getDesignTokens = (mode: PaletteMode) => createTheme({
     },
     MuiDialog: {
       styleOverrides: {
+        paperFullScreen: {
+          margin: 0
+        },
         paper: {
           margin: '1rem',
           width : '100%'
