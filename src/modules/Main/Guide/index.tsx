@@ -103,7 +103,7 @@ export const Guide = () => {
 };
 
 const Image = styled('img')`
-  width        : 100%;
+  width        : 18rem;
   aspect-ratio : 1;
   border-radius: 1rem;
   align-self   : center;

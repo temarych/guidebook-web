@@ -32,7 +32,7 @@ export const PlayDialog = ({
     <Dialog {...props} fullScreen PaperProps={{ elevation: 0 }}>
       <Header onClose={props.onClose} />
 
-      <Stack p={2} spacing={4} flex={1} overflow="scroll">
+      <Stack px={2} py={4} spacing={4} flex={1} overflow="scroll">
         <Image src={step.image} />
   
         <Stack spacing={1}>
@@ -61,6 +61,8 @@ export const PlayDialog = ({
 
 const Image = styled('img')`
   aspect-ratio : 1;
+  width        : 18rem;
+  align-self   : center;
   border-radius: 1rem;
   object-fit   : cover;
 `;
