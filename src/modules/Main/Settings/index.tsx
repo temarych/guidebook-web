@@ -38,7 +38,7 @@ export const Settings = () => {
       <Stack spacing={4}>
         <SectionWrapper variant="outlined">
           <Stack direction="row" alignItems="center" p={2} spacing={2}>
-            <Avatar />
+            <Avatar sx={{ width: '3rem', height: '3rem' }} />
             <Stack>
               <Typography variant="body1" fontWeight="bold">
                 {user.username}
