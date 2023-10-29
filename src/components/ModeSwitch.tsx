@@ -1,10 +1,17 @@
-import { useCallback }                     from 'react';
-import { ToggleButton, ToggleButtonGroup } from '@mui/material';
-import { Computer, DarkMode, LightMode }   from '@mui/icons-material';
-import { useMode }                         from '@hooks/useMode';
-import { IMode }                           from '@typings/mode';
+import { useCallback }                   from 'react';
+import {
+  ToggleButton,
+  ToggleButtonGroup,
+  useMediaQuery,
+  useTheme,
+}                                        from '@mui/material';
+import { Computer, DarkMode, LightMode, Smartphone } from '@mui/icons-material';
+import { useMode }                       from '@hooks/useMode';
+import { IMode }                         from '@typings/mode';
 
 export const ModeSwitch = () => {
+  const theme             = useTheme();
+  const isMobile          = useMediaQuery(theme.breakpoints.down('sm'));
   const { mode, setMode } = useMode();
 
   const handleChange = useCallback(
@@ -26,7 +33,11 @@ export const ModeSwitch = () => {
         <LightMode fontSize="small" />
       </ToggleButton>
       <ToggleButton value="system">
-        <Computer fontSize="small" />
+        {isMobile ? (
+          <Smartphone fontSize="small" />
+        ) : (
+          <Computer fontSize="small" />
+        )}
       </ToggleButton>
       <ToggleButton value="dark">
         <DarkMode fontSize="small" />

@@ -34,9 +34,9 @@ export const FavoriteButton = ({
       onClick = {handleToggleFavorite}
     >
       {isFavorite ? (
-        <Favorite sx={{ fontSize: '1.9rem' }} />
+        <Favorite sx={{ fontSize: '2.1rem' }} />
       ) : (
-        <FavoriteBorderOutlined sx={{ fontSize: '1.9rem' }} />
+        <FavoriteBorderOutlined sx={{ fontSize: '2.1rem' }} />
       )}
     </IconButton>
   );
