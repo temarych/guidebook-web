@@ -9,11 +9,13 @@ import {
 }                     from '@mui/icons-material';
 
 export interface FavoriteButtonProps {
+  fontSize?        : string;
   defaultIsFavorite: boolean;
   onToggleFavorite?: (isFavorite: boolean) => void;
 }
 
 export const FavoriteButton = ({
+  fontSize,
   defaultIsFavorite,
   onToggleFavorite,
 }: FavoriteButtonProps) => {
@@ -34,9 +36,9 @@ export const FavoriteButton = ({
       onClick = {handleToggleFavorite}
     >
       {isFavorite ? (
-        <Favorite sx={{ fontSize: '2.1rem' }} />
+        <Favorite sx={{ fontSize }} />
       ) : (
-        <FavoriteBorderOutlined sx={{ fontSize: '2.1rem' }} />
+        <FavoriteBorderOutlined sx={{ fontSize }} />
       )}
     </IconButton>
   );

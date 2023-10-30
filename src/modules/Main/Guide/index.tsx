@@ -55,8 +55,8 @@ export const Guide = () => {
   if (!guide || !steps) return <Loader />;
   
   return (
-    <MainContainer>
-      <Stack spacing={4}>
+    <>
+      <MainContainer spacing={4}>
         <Image src={guide.image} />
         
         <Stack
@@ -70,11 +70,12 @@ export const Guide = () => {
               avatar   = {null}
               username = {guide.author.username}
             />
-            <Typography variant="h6" lineHeight="1.75rem">
+            <Typography variant="h6">
               {guide.title}
             </Typography>
           </Stack>
           <FavoriteButton
+            fontSize          = "2.1rem"
             defaultIsFavorite = {guide.isFavorite}
             onToggleFavorite  = {handleToggleFavorite}
           />
@@ -83,7 +84,7 @@ export const Guide = () => {
         <Typography variant="body1">
           {guide.description}
         </Typography>
-      </Stack>
+      </MainContainer>
 
       <MainMask>
         <PlayButton
@@ -101,7 +102,7 @@ export const Guide = () => {
         steps    = {steps}
         onClose  = {playDialogHandlers.close}
       />
-    </MainContainer>
+    </>
   );
 };
 

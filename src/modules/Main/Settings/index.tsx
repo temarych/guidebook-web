@@ -34,8 +34,8 @@ export const Settings = () => {
   const [isConfirmDeleteModalOpen, confirmDeleteModalHandlers]   = useDisclosure();
 
   return (
-    <MainContainer title="Settings">
-      <Stack spacing={4}>
+    <>
+      <MainContainer title="Settings" spacing={4}>
         <SectionWrapper variant="outlined">
           <Stack direction="row" alignItems="center" p={2} spacing={2}>
             <Avatar sx={{ width: '3rem', height: '3rem' }} />
@@ -90,7 +90,7 @@ export const Settings = () => {
             Delete account
           </Button>
         </ButtonGroup>
-      </Stack>
+      </MainContainer>
 
       <ConfirmModal
         open      = {isConfirmSignOutModalOpen}
@@ -107,7 +107,7 @@ export const Settings = () => {
         onCancel  = {confirmDeleteModalHandlers.close}
         onConfirm = {deleteMe}
       />
-    </MainContainer>
+    </>
   );
 };
 
