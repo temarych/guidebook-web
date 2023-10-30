@@ -11,7 +11,7 @@ import {
 }                from '@mui/material';
 import { grey }  from '@mui/material/colors';
 
-export interface ConfirmModalProps extends Omit<DialogProps, 'onClose' | 'children'> {
+export interface ConfirmModalProps extends Omit<DialogProps, 'onClose' | 'children' | 'maxWidth'> {
   title     : string;
   message   : string;
   onCancel? : () => void;
@@ -25,13 +25,25 @@ export const ConfirmModal = ({
   onConfirm,
   ...props
 }: ConfirmModalProps) => (
-  <Dialog {...props} onClose={onCancel}>
+  <Dialog
+    {...props}
+    fullWidth
+    onClose    = {onCancel}
+    PaperProps = {{ variant: 'outlined' }}
+    sx         = {{ '.MuiPaper-root': { maxWidth: '25rem' } }}
+  >
     <Header variant="outlined">
-      <Stack direction="row" alignItems="center" justifyContent="space-between" px={2} py={1}>
+      <Stack
+        direction      = "row"
+        alignItems     = "center"
+        justifyContent = "space-between"
+        px             = {2}
+        py             = {1}
+      >
         <Typography variant="h6">
           {title}
         </Typography>
-        <IconButton onClick={onCancel}>
+        <IconButton size="large" onClick={onCancel}>
           <Close />
         </IconButton>
       </Stack>

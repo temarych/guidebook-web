@@ -1,14 +1,7 @@
-import { api }           from '@store/api';
-import { IGuidePreview } from '@typings/guide';
-
-export type IGetFavoriteGuidesResponse = IGuidePreview[];
+import { api } from '@store/api';
 
 export const favoriteApi = api.injectEndpoints({
   endpoints: builder => ({
-    getFavoriteGuides: builder.query<IGetFavoriteGuidesResponse, void>({
-      query       : () => `/favorite/guides`,
-      providesTags: ['guide']
-    }),
     addFavoriteGuide: builder.mutation<void, string>({
       query: (id) => ({
         method: 'PUT',
@@ -28,6 +21,5 @@ export const favoriteApi = api.injectEndpoints({
 
 export const {
   useAddFavoriteGuideMutation,
-  useRemoveFavoriteGuideMutation,
-  useGetFavoriteGuidesQuery
+  useRemoveFavoriteGuideMutation
 } = favoriteApi;

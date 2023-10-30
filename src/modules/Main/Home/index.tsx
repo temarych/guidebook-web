@@ -5,19 +5,17 @@ import {
 }                               from 'react';
 import { useNavigate }          from 'react-router-dom';
 import {
-  InputAdornment,
   Paper,
   Stack, 
-  TextField,
-  Typography,
   debounce,
   styled,
 }                               from '@mui/material';
-import { Search }               from '@mui/icons-material';
 import { useSearchGuidesQuery } from '@store/api/searchApi';
 import { Loader }               from '@components/Loader';
 import { MainContainer }        from '../components/MainContainer';
 import { GuideList }            from '../components/GuideList';
+import { SearchField }          from '../components/SearchField';
+import { ListPlaceholder }      from '../components/ListPlaceholder';
 
 export const Home = () => {
   const navigate          = useNavigate();
@@ -36,18 +34,7 @@ export const Home = () => {
   return (
     <MainContainer title="Home">
       <Stack spacing={2}>
-        <TextField
-          autoComplete = "off"
-          placeholder  = "Search"
-          onChange     = {handleQueryChange}
-          InputProps   = {{
-            startAdornment: (
-              <InputAdornment position="start">
-                <Search />
-              </InputAdornment>
-            )
-          }}
-        />
+        <SearchField onChange={handleQueryChange} />
       
         <ListWrapper variant="outlined">
           {(guides.length > 0) ? (
@@ -56,10 +43,10 @@ export const Home = () => {
               onClick = {id => navigate(`/guide/${id}`)}
             />
           ) : (
-            <Stack py={4} px={2} spacing={1}>
-              <Typography textAlign="center" variant="h2">🤷‍♂️</Typography>
-              <Typography textAlign="center" variant="body2">Nothing found</Typography>
-            </Stack>
+            <ListPlaceholder
+              emoji   = "🤷‍♂️"
+              caption = "Nothing found"
+            />
           )}
         </ListWrapper>
       </Stack>

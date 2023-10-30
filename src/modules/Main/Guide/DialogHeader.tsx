@@ -1,13 +1,13 @@
 import { IconButton, Paper, styled, } from '@mui/material';
 import { Close }                      from '@mui/icons-material';
 
-export interface HeaderProps {
+export interface DialogHeader {
   onClose?: () => void;
 }
 
-export const Header = ({
+export const DialogHeader = ({
   onClose
-}: HeaderProps) => (
+}: DialogHeader) => (
   <>
     <Placeholder />
     <Wrapper variant="outlined">
@@ -21,7 +21,7 @@ export const Header = ({
 );
 
 const Placeholder = styled('div')`
-  height: var(--header-height);
+  height: 4rem;
 `;
 
 const Wrapper = styled(Paper)`
@@ -33,7 +33,7 @@ const Wrapper = styled(Paper)`
   left          : 0;
   right         : 0;
   top           : 0;
-  height        : var(--header-height);
+  height        : 4rem;
   display       : flex;
   flex-direction: column;
   align-items   : center;

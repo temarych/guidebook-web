@@ -51,7 +51,6 @@ export const App = () => {
         styles={{
           body: {
             '--main-max-width': '30rem',
-            '--header-height' : '4rem',
             '--navbar-height' : '56px'
           }
         }}

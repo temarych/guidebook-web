@@ -1,6 +1,7 @@
 import {
   Avatar,
   Button,
+  ButtonGroup,
   Divider,
   List,
   Paper,
@@ -33,11 +34,11 @@ export const Settings = () => {
   const [isConfirmDeleteModalOpen, confirmDeleteModalHandlers]   = useDisclosure();
 
   return (
-    <MainContainer title="Settings">
-      <Stack spacing={4}>
+    <>
+      <MainContainer title="Settings" spacing={4}>
         <SectionWrapper variant="outlined">
           <Stack direction="row" alignItems="center" p={2} spacing={2}>
-            <Avatar />
+            <Avatar sx={{ width: '3rem', height: '3rem' }} />
             <Stack>
               <Typography variant="body1" fontWeight="bold">
                 {user.username}
@@ -71,7 +72,7 @@ export const Settings = () => {
           </List>
         </SectionWrapper>
 
-        <Stack spacing={2}>
+        <ButtonGroup orientation="vertical">
           <Button
             variant = "outlined"
             size    = "large"
@@ -88,12 +89,10 @@ export const Settings = () => {
           >
             Delete account
           </Button>
-        </Stack>
-      </Stack>
+        </ButtonGroup>
+      </MainContainer>
 
       <ConfirmModal
-        fullWidth
-        maxWidth  = "xs"
         open      = {isConfirmSignOutModalOpen}
         title     = "Sign out"
         message   = "Are you sure you want to sign out?"
@@ -102,15 +101,13 @@ export const Settings = () => {
       />
 
       <ConfirmModal
-        fullWidth
-        maxWidth  = "xs"
         open      = {isConfirmDeleteModalOpen}
         title     = "Delete account"
         message   = "Are you sure you want to delete your account?"
         onCancel  = {confirmDeleteModalHandlers.close}
         onConfirm = {deleteMe}
       />
-    </MainContainer>
+    </>
   );
 };
 
