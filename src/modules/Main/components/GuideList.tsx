@@ -41,7 +41,7 @@ export const GuideList = ({
 
               <ChevronRight />
             </Stack>
-          </ListItemButton>s
+          </ListItemButton>
         </ListItem>
         {(index < guides.length - 1) && (
           <Divider />
