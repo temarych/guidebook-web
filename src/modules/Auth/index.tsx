@@ -1,34 +1,34 @@
-import { Outlet } from 'react-router-dom';
-import {
-  Card,
-  Stack,
-  useMediaQuery,
-  useTheme,
-}                 from '@mui/material';
+import { Outlet }              from 'react-router-dom';
+import { Card, Stack, styled } from '@mui/material';
 
-export const Auth = () => {
-  const theme    = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+export const Auth = () => (
+  <Wrapper>
+    <Container variant="outlined">
+      <Outlet />
+    </Container>
+  </Wrapper>
+);
 
-  return (
-    <Stack
-      width  = "100%"
-      height = {['unset', '100vh']}
-      p      = {[0, 3]}
-    >
-      <Card
-        variant   = "outlined"
-        sx        = {{
-          maxWidth    : ['unset', '25rem'],
-          margin      : [0, 'auto'],
-          borderRadius: isMobile ? 0 : undefined,
-          border      : isMobile ? 0 : undefined,
-          width       : '100%',
-          overflow    : 'visible'
-        }}
-      >
-        <Outlet />
-      </Card>
-    </Stack>
-  );
-};
+const Wrapper = styled(Stack)`
+  width: 100%;
+
+  ${({ theme }) => theme.breakpoints.up('sm')} {
+    padding: ${({ theme }) => theme.spacing(2)};
+    height : 100vh;
+  }
+`;
+
+const Container = styled(Card)`
+  width   : 100%;
+  overflow: visible;
+
+  ${({ theme }) => theme.breakpoints.up('sm')} {
+    max-width: 25rem;
+    margin   : auto;
+  }
+
+  ${({ theme }) => theme.breakpoints.down('sm')} {
+    border-radius: 0;
+    border       : 0;
+  }
+`;
