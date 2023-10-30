@@ -1,7 +1,8 @@
 import { api }           from '@store/api';
 import { IGuidePreview } from '@typings/guide';
 
-export type ISearchGuidesResponse = IGuidePreview[];
+export type ISearchGuidesResponse         = IGuidePreview[];
+export type ISearchFavoriteGuidesResponse = IGuidePreview[];
 
 export const searchApi = api.injectEndpoints({
   endpoints: builder => ({
@@ -11,9 +12,17 @@ export const searchApi = api.injectEndpoints({
         params: { query },
       })
     }),
+    searchFavoriteGuides: builder.query<ISearchFavoriteGuidesResponse, string>({
+      query: (query) => ({
+        url   : '/search/favorite/guides',
+        params: { query },
+      }),
+      providesTags: ['guide']
+    })
   })
 });
 
 export const {
-  useSearchGuidesQuery
+  useSearchGuidesQuery,
+  useSearchFavoriteGuidesQuery
 } = searchApi;
