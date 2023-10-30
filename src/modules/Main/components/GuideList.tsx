@@ -26,14 +26,22 @@ export const GuideList = ({
         <ListItem disablePadding>
           <ListItemButton sx={{ py: 1.75 }} onClick={() => onClick?.(guide.id)}>
             <Stack direction="row" alignItems="center" spacing={2} width="100%">
-              <Typography variant="h5">{guide.emoji}</Typography>
+              <Typography variant="h5">
+                {guide.emoji}
+              </Typography>
+
               <Stack flex={1}>
-                <ClampTypography fontWeight="bold" variant="subtitle1">{guide.title}</ClampTypography>
-                <ClampTypography variant="body2">{guide.description}</ClampTypography>
+                <ClampTypography fontWeight="bold" variant="subtitle1">
+                  {guide.title}
+                </ClampTypography>
+                <ClampTypography variant="body2">
+                  {guide.description}
+                </ClampTypography>
               </Stack>
+
               <ChevronRight />
             </Stack>
-          </ListItemButton>
+          </ListItemButton>s
         </ListItem>
         {(index < guides.length - 1) && (
           <Divider />
