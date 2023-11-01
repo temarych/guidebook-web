@@ -8,6 +8,7 @@ import {
 import {
   Favorite,
   Home,
+  Person,
   Settings,
 }                            from '@mui/icons-material';
 
@@ -32,6 +33,13 @@ export const NavBar = () => {
             value     = "/favorite"
             label     = "Favorite"
             icon      = {<Favorite />}
+          />
+          <BottomNavigationAction
+            component = {Link}
+            to        = "/profile"
+            value     = "/profile"
+            label     = "Profile"
+            icon      = {<Person />}
           />
           <BottomNavigationAction
             component = {Link}
