@@ -24,6 +24,7 @@ import { UserTag }          from '@components/UserTag';
 import { Loader }           from '@components/Loader';
 import { MainContainer }    from '../components/MainContainer';
 import { MainMask }         from '../components/MainMask';
+import { StaticImage }      from '../components/StaticImage';
 import { FavoriteButton }   from './FavoriteButton';
 import { PlayDialog }       from './PlayDialog';
 
@@ -57,7 +58,7 @@ export const Guide = () => {
   return (
     <>
       <MainContainer spacing={4}>
-        <Image src={guide.image} />
+        <StaticImage src={guide.image} />
         
         <Stack
           direction      = "row"
@@ -105,14 +106,6 @@ export const Guide = () => {
     </>
   );
 };
-
-const Image = styled('img')`
-  width        : 18rem;
-  aspect-ratio : 1;
-  border-radius: 1rem;
-  align-self   : center;
-  object-fit   : cover;
-`;
 
 const PlayButton = styled(Fab)`
   position: absolute;

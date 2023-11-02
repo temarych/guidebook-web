@@ -8,6 +8,7 @@ import {
 }                       from '@mui/material';
 import { IGuide }       from '@typings/guide';
 import { IStep }        from '@typings/step';
+import { StaticImage }  from '../components/StaticImage';
 import { ControlBar }   from './ControlBar';
 import { DialogHeader } from './DialogHeader';
 
@@ -34,7 +35,7 @@ export const PlayDialog = ({
 
       <Wrapper>
         <Container>
-          <Image src={step.image} />
+          <StaticImage src={step.image} />
     
           <Stack spacing={1}>
             <Typography variant="body2">
@@ -60,14 +61,6 @@ export const PlayDialog = ({
     </Dialog>
   );
 };
-
-const Image = styled('img')`
-  aspect-ratio : 1;
-  width        : 18rem;
-  align-self   : center;
-  border-radius: 1rem;
-  object-fit   : cover;
-`;
 
 const Wrapper = styled('div')`
   display       : flex;
