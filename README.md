@@ -5,6 +5,10 @@
 ![Platform](https://img.shields.io/badge/Platform-Web-brightgreen.svg)
 ![License](https://img.shields.io/badge/License-MIT-orange.svg)
 
+## Screenshots
+
+<img src="screenshots/home.png"/>
+
 ## Table of Contents
 
 - [Introduction](#introduction)
