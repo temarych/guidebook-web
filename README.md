@@ -7,7 +7,11 @@
 
 ## Screenshots
 
-<img src="screenshots/home.png"/>
+<div style="display: flex; justify-content: space-between;">
+    <img src="Screenshots/home.png" width="250"/>
+    <img src="Screenshots/details.png" width="250"/>
+    <img src="Screenshots/steps.png" width="250"/>
+</div>
 
 ## Table of Contents
 
