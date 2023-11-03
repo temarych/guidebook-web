@@ -26,7 +26,7 @@ GuideBook is a web application that allows users to explore, view, and favorite 
 - Rich multimedia content.
 
 ## Usage
-- Open your web browser and navigate to http://localhost:3000 to access the web app.
+- Open your web browser and navigate to [GuideBook Link](https://guidebook-web-alpha.vercel.app/) to access the web app.
 - Launch the GuideBook web app in your browser.
 - Explore the list of available guides.
 - Click on a guide to view its details.
