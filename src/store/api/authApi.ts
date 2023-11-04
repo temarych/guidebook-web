@@ -19,12 +19,6 @@ export interface ISignUpResponse {
   accessToken: string;
 }
 
-export interface IGetMeResponse {
-  id      : string;
-  username: string;
-  email   : string;
-}
-
 export const authApi = api.injectEndpoints({
   endpoints: builder => ({
     signIn: builder.mutation<ISignInResponse, ISignInRequest>({
@@ -42,26 +36,11 @@ export const authApi = api.injectEndpoints({
         body
       }),
       invalidatesTags: ['guide']
-    }),
-    getMe: builder.query<IGetMeResponse, string | null>({
-      query: () => ({
-        url: '/auth/me'
-      }),
-      providesTags: ['me']
-    }),
-    deleteMe: builder.mutation<void, void>({
-      query: () => ({
-        method: 'DELETE',
-        url   : '/auth/me'
-      }),
-      invalidatesTags: ['me']
-    }),
+    })
   })
 });
 
 export const {
-  useDeleteMeMutation,
-  useGetMeQuery,
   useSignInMutation,
   useSignUpMutation
 } = authApi;

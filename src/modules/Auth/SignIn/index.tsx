@@ -6,8 +6,8 @@ import { zodResolver }                  from '@hookform/resolvers/zod';
 import { Stack, TextField, Typography } from '@mui/material';
 import { LoadingButton }                from '@mui/lab';
 import { useSignInMutation }            from '@store/api/authApi';
+import { useGetSelfQuery }              from '@store/api/selfApi';
 import { RtkError }                     from '@typings/error';
-import { useSelf }                      from '@hooks/useSelf';
 import { useAccessToken }               from '@hooks/useAccessToken';
 import { AuthContainer }                from '@modules/Auth/components/AuthContainer';
 import { Password }                     from '@components/Password';
@@ -20,7 +20,7 @@ const signInSchema = z.object({
 type FormData = z.infer<typeof signInSchema>;
 
 export const SignIn = () => {
-  const { self }                 = useSelf();
+  const { data: self }           = useGetSelfQuery();
   const { setAccessToken }       = useAccessToken();
   const [signIn, { isLoading }]  = useSignInMutation();
 

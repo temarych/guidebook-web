@@ -1,25 +1,24 @@
-import { ChangeEvent, useMemo, useState } from 'react';
-import { debounce }                       from 'lodash';
-import { useNavigate }                    from 'react-router-dom';
-import { Card, Stack, Tab }               from '@mui/material';
-import { TabContext, TabList, TabPanel }  from '@mui/lab';
-import { useSelf }                        from '@hooks/useSelf';
-import { IUser }                          from '@typings/user';
-import { useSearchGuidesQuery }           from '@store/api/searchApi';
-import { Loader }                         from '@components/Loader';
-import { UserInfo }                       from '@components/UserInfo';
-import { GuideList }                      from '../components/GuideList';
-import { MainContainer }                  from '../components/MainContainer';
-import { SearchField }                    from '../components/SearchField';
-import { ListPlaceholder }                from '../components/ListPlaceholder';
+import { ChangeEvent, useMemo, useState }       from 'react';
+import { debounce }                             from 'lodash';
+import { useNavigate }                          from 'react-router-dom';
+import { Card, Stack, Tab }                     from '@mui/material';
+import { TabContext, TabList, TabPanel }        from '@mui/lab';
+import { IUser }                                from '@typings/user';
+import { useGetMyGuidesQuery, useGetSelfQuery } from '@store/api/selfApi';
+import { Loader }                               from '@components/Loader';
+import { UserInfo }                             from '@components/UserInfo';
+import { GuideList }                            from '../components/GuideList';
+import { MainContainer }                        from '../components/MainContainer';
+import { SearchField }                          from '../components/SearchField';
+import { ListPlaceholder }                      from '../components/ListPlaceholder';
 
 export const Profile = () => {
   const navigate          = useNavigate();
-  const { self }          = useSelf();
-  const user              = self as IUser;
   const [query, setQuery] = useState('');
-  const { data: guides }  = useSearchGuidesQuery(query); 
+  const { data: self }    = useGetSelfQuery();
+  const { data: guides }  = useGetMyGuidesQuery(query); 
   const [tab, setTab]     = useState<'guides' | 'guidebooks'>('guides');
+  const user              = self as IUser;
 
   const handleQueryChange = useMemo(
     () => debounce((event: ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +30,7 @@ export const Profile = () => {
   if (!guides) return <Loader />;
 
   return (
-    <MainContainer spacing={4}>
+    <MainContainer title="Profile" spacing={4}>
       <Card variant="outlined" sx={{ py: 6 }}>
         <UserInfo {...user} />
       </Card>

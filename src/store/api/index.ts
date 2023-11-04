@@ -9,7 +9,7 @@ export const apiUrl = import.meta.env.VITE_API_URL as string;
 
 export const api = createApi({
   reducerPath: 'api',
-  tagTypes   : ['guide', 'me'],
+  tagTypes   : ['guide', 'self'],
   baseQuery  : fetchBaseQuery({
     baseUrl       : apiUrl,
     prepareHeaders: (headers, { getState }) => {
