@@ -1,12 +1,13 @@
 import { ChangeEvent, useMemo, useState }       from 'react';
 import { debounce }                             from 'lodash';
 import { useNavigate }                          from 'react-router-dom';
-import { Card, Stack, Tab }                     from '@mui/material';
+import { Card, IconButton, Stack, Tab }         from '@mui/material';
+import { Edit }                                 from '@mui/icons-material';
 import { TabContext, TabList, TabPanel }        from '@mui/lab';
 import { IUser }                                from '@typings/user';
 import { useGetMyGuidesQuery, useGetSelfQuery } from '@store/api/selfApi';
 import { Loader }                               from '@components/Loader';
-import { UserInfo }                             from '@components/UserInfo';
+import { UserPreview }                          from '@components/UserPreview';
 import { GuideList }                            from '../components/GuideList';
 import { MainContainer }                        from '../components/MainContainer';
 import { SearchField }                          from '../components/SearchField';
@@ -30,9 +31,22 @@ export const Profile = () => {
   if (!guides) return <Loader />;
 
   return (
-    <MainContainer title="Profile" spacing={4}>
-      <Card variant="outlined" sx={{ py: 6 }}>
-        <UserInfo {...user} />
+    <MainContainer
+      title     = "Profile"
+      spacing   = {4}
+      rightSlot = {(
+        <IconButton>
+          <Edit />
+        </IconButton>
+      )}
+    >
+      <Card variant="outlined">
+        <UserPreview
+          {...user}
+          guidesCount     = {0}
+          guidebooksCount = {0}
+          likesCount      = {0}
+        />
       </Card>
 
       <Stack spacing={2}>

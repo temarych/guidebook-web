@@ -1,13 +1,10 @@
 import {
-  Avatar,
   Button,
   ButtonGroup,
   Divider,
   List,
   Paper,
-  Stack,
   Switch,
-  Typography,
   styled,
 }                             from '@mui/material';
 import {
@@ -22,6 +19,7 @@ import {
 }                             from '@store/api/selfApi';
 import { useSignOutMutation } from '@store/api/authApi';
 import { IUser }              from '@typings/user';
+import { UserCard }           from '@components/UserCard';
 import { ModeSwitch }         from '@components/ModeSwitch';
 import { ConfirmModal }       from '@components/ConfirmModal';
 import { MainContainer }      from '../components/MainContainer';
@@ -39,17 +37,7 @@ export const Settings = () => {
     <>
       <MainContainer title="Settings" spacing={4}>
         <SectionWrapper variant="outlined">
-          <Stack direction="row" alignItems="center" p={2} spacing={2}>
-            <Avatar sx={{ width: '3rem', height: '3rem' }} />
-            <Stack>
-              <Typography variant="body1" fontWeight="bold">
-                {user.username}
-              </Typography>
-              <Typography variant="body2">
-                {user.email}
-              </Typography>
-            </Stack>
-          </Stack>
+          <UserCard {...user} />
         </SectionWrapper>
 
         <SectionWrapper variant="outlined">

@@ -2,22 +2,33 @@ import { ReactNode }                 from 'react';
 import { Stack, Typography, styled } from '@mui/material';
 
 export interface MainContainerProps {
-  title?   : string;
-  spacing? : number;
-  children?: ReactNode;
+  title?    : string;
+  spacing?  : number;
+  rightSlot?: ReactNode;
+  children? : ReactNode;
 }
 
 export const MainContainer = ({
   title,
   spacing,
+  rightSlot,
   children
 }: MainContainerProps) => (
   <Wrapper>
     <Container spacing={4}>
-      {title && (
-        <Typography variant="h5" fontWeight="bold">
-          {title}
-        </Typography>
+      {(title || rightSlot) && (
+        <Stack direction="row" alignItems="center" position="relative">
+          {title && (
+            <Typography variant="h5" fontWeight="bold">
+              {title}
+            </Typography>
+          )}
+          {rightSlot && (
+            <Stack position="absolute" right={0}>
+              {rightSlot}
+            </Stack>
+          )}
+        </Stack>
       )}
       <Stack spacing={spacing}>
         {children}
