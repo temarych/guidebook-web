@@ -29,7 +29,7 @@ export const ConfirmModal = ({
     {...props}
     fullWidth
     onClose    = {onCancel}
-    PaperProps = {{ variant: 'outlined' }}
+    PaperProps = {{ variant: 'outlined', elevation: 0 }}
     sx         = {{ '.MuiPaper-root': { maxWidth: '25rem' } }}
   >
     <Header variant="outlined">

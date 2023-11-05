@@ -1,16 +1,16 @@
 import { useCallback }                  from 'react';
 import { Link, Navigate }               from 'react-router-dom';
 import { useForm }                      from 'react-hook-form';
+import { useSelector }                  from 'react-redux';
 import { z }                            from 'zod';
 import { zodResolver }                  from '@hookform/resolvers/zod';
 import { Stack, TextField, Typography } from '@mui/material';
 import { LoadingButton }                from '@mui/lab';
 import { useSignUpMutation }            from '@store/api/authApi';
+import { IAppState }                    from '@store/index';
 import { RtkError }                     from '@typings/error';
-import { useSelf }                      from '@hooks/useSelf';
-import { useAccessToken }               from '@hooks/useAccessToken';
-import { AuthContainer }                from '@modules/Auth/components/AuthContainer';
 import { Password }                     from '@components/Password';
+import { AuthContainer }                from '../components/AuthContainer';
 
 const signUpSchema = z.object({
   username       : z.string().min(1),
@@ -30,8 +30,7 @@ const signUpSchema = z.object({
 type FormData = z.infer<typeof signUpSchema>;
 
 export const SignUp = () => {
-  const { self }                = useSelf();
-  const { setAccessToken }      = useAccessToken();
+  const accessToken             = useSelector((state: IAppState) => state.auth.accessToken);
   const [signUp, { isLoading }] = useSignUpMutation();
 
   const {
@@ -52,9 +51,6 @@ export const SignUp = () => {
   const onSubmit = useCallback(
     (values: FormData) => {
       signUp(values).unwrap()
-        .then(({ accessToken }) => {
-          setAccessToken(accessToken);
-        })
         .catch((error: RtkError) => {
           if (error.data.code === 'email-not-unique') {
             setError('email', { message: 'Email is not unique' });
@@ -64,10 +60,10 @@ export const SignUp = () => {
           }
         });
     },
-    [signUp, setError, setAccessToken],
+    [signUp, setError]
   );
 
-  if (self) return <Navigate to="/" />;
+  if (accessToken) return <Navigate to="/" />;
 
   return (
     <AuthContainer title="Sign up">

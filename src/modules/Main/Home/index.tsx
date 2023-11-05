@@ -2,25 +2,25 @@ import {
   ChangeEvent,
   useMemo,
   useState,
-}                               from 'react';
-import { useNavigate }          from 'react-router-dom';
+}                            from 'react';
+import { useNavigate }       from 'react-router-dom';
 import {
   Paper,
   Stack, 
   debounce,
   styled,
-}                               from '@mui/material';
-import { useSearchGuidesQuery } from '@store/api/searchApi';
-import { Loader }               from '@components/Loader';
-import { MainContainer }        from '../components/MainContainer';
-import { GuideList }            from '../components/GuideList';
-import { SearchField }          from '../components/SearchField';
-import { ListPlaceholder }      from '../components/ListPlaceholder';
+}                            from '@mui/material';
+import { useGetGuidesQuery } from '@store/api/guideApi';
+import { Loader }            from '@components/Loader';
+import { MainContainer }     from '../components/MainContainer';
+import { GuideList }         from '../components/GuideList';
+import { SearchField }       from '../components/SearchField';
+import { ListPlaceholder }   from '../components/ListPlaceholder';
 
 export const Home = () => {
   const navigate          = useNavigate();
   const [query, setQuery] = useState<string>('');
-  const { data: guides }  = useSearchGuidesQuery(query);
+  const { data: guides }  = useGetGuidesQuery(query);
 
   const handleQueryChange = useMemo(
     () => debounce((event: ChangeEvent<HTMLInputElement>) => {

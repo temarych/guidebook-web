@@ -1,16 +1,25 @@
-import { useMemo }                                   from 'react';
-import { RouterProvider, createBrowserRouter }       from 'react-router-dom';
-import { CssBaseline, GlobalStyles, ThemeProvider, useMediaQuery } from '@mui/material';
-import { useMode }                                   from '@hooks/useMode';
-import { Main }                                      from '@modules/Main';
-import { Home }                                      from '@modules/Main/Home';
-import { Favorite }                                  from '@modules/Main/Favorite';
-import { Settings }                                  from '@modules/Main/Settings';
-import { Guide }                                     from '@modules/Main/Guide';
-import { Auth }                                      from '@modules/Auth';
-import { SignIn }                                    from '@modules/Auth/SignIn';
-import { SignUp }                                    from '@modules/Auth/SignUp';
-import { getDesignTokens }                           from './theme';
+import { useMemo }         from 'react';
+import {
+  RouterProvider,
+  createBrowserRouter
+}                          from 'react-router-dom';
+import {
+  CssBaseline,
+  GlobalStyles,
+  ThemeProvider,
+  useMediaQuery
+}                          from '@mui/material';
+import { useMode }         from '@hooks/useMode';
+import { Main }            from '@modules/Main';
+import { Home }            from '@modules/Main/Home';
+import { Favorite }        from '@modules/Main/Favorite';
+import { Settings }        from '@modules/Main/Settings';
+import { Guide }           from '@modules/Main/Guide';
+import { Profile }         from '@modules/Main/Profile';
+import { Auth }            from '@modules/Auth';
+import { SignIn }          from '@modules/Auth/SignIn';
+import { SignUp }          from '@modules/Auth/SignUp';
+import { getDesignTokens } from './theme';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +29,7 @@ const router = createBrowserRouter([
       { path: '/', element: <Home /> },
       { path: 'favorite', element: <Favorite /> },
       { path: 'settings', element: <Settings /> },
+      { path: 'profile', element: <Profile /> },
       { path: 'guide/:guideId', element: <Guide /> }
     ]
   },

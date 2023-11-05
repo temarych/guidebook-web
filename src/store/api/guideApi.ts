@@ -1,23 +1,31 @@
-import { api }    from '@store/api';
-import { IGuide } from '@typings/guide';
-import { IStep }  from '@typings/step';
+import { api }                   from '@store/api';
+import { IGuide, IGuidePreview } from '@typings/guide';
+import { IStep }                 from '@typings/step';
 
-export type IGetGuideResponse = IGuide;
-export type IGetStepsResponse = IStep[];
+export type IGetGuideResponse     = IGuide;
+export type IGetStepsResponse     = IStep[];
+export type ISearchGuidesResponse = IGuidePreview[];
 
 export const guideApi = api.injectEndpoints({
   endpoints: builder => ({
     getGuide: builder.query<IGetGuideResponse, string>({
-      query       : (quideId) => `/guide/${quideId}`,
+      query       : (quideId) => `/guides/${quideId}`,
       providesTags: ['guide']
     }),
     getSteps: builder.query<IGetStepsResponse, string>({
-      query: (quideId) => `/guide/${quideId}/steps`
+      query: (quideId) => `/guides/${quideId}/steps`
+    }),
+    getGuides: builder.query<ISearchGuidesResponse, string>({
+      query: (query) => ({
+        url   : '/guides/',
+        params: { query },
+      })
     })
   })
 });
 
 export const {
   useGetGuideQuery,
-  useGetStepsQuery
+  useGetStepsQuery,
+  useGetGuidesQuery
 } = guideApi;

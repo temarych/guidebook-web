@@ -2,7 +2,7 @@ import { ChangeEvent, useMemo, useState } from 'react';
 import { debounce }                       from 'lodash';
 import { useNavigate }                    from 'react-router-dom';
 import { Paper, Stack, styled }           from '@mui/material';
-import { useSearchFavoriteGuidesQuery }   from '@store/api/searchApi';
+import { useGetFavoriteGuidesQuery }      from '@store/api/favoriteApi';
 import { Loader }                         from '@components/Loader';
 import { MainContainer }                  from '../components/MainContainer';
 import { GuideList }                      from '../components/GuideList';
@@ -12,7 +12,7 @@ import { ListPlaceholder }                from '../components/ListPlaceholder';
 export const Favorite = () => {
   const navigate          = useNavigate();
   const [query, setQuery] = useState('');
-  const { data: guides }  = useSearchFavoriteGuidesQuery(query);
+  const { data: guides }  = useGetFavoriteGuidesQuery(query);
 
   const handleQueryChange = useMemo(
     () => debounce((event: ChangeEvent<HTMLInputElement>) => {
