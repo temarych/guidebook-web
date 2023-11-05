@@ -54,10 +54,15 @@ export const Profile = () => {
                   guides  = {guides}
                   onClick = {id => navigate(`/guide/${id}`)}
                 />
-              ) : (
+              ) : query ? (
                 <ListPlaceholder
                   emoji   = "🤷‍♂️"
                   caption = "Nothing found"
+                />
+              ) : (
+                <ListPlaceholder
+                  emoji   = "🔍"
+                  caption = "No guides"
                 />
               )}
             </TabPanel>
