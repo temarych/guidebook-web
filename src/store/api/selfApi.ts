@@ -2,7 +2,7 @@ import { api }           from '@store/api';
 import { IGuidePreview } from '@typings/guide';
 import { IUser }         from '@typings/user';
 
-export type IGetSelfResponse     = IUser;
+export type IGetSelfResponse     = IUser | null;
 export type IGetMyGuidesResponse = IGuidePreview[];
 
 export const selfApi = api.injectEndpoints({

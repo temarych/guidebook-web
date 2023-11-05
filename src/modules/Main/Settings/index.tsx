@@ -9,29 +9,29 @@ import {
   Switch,
   Typography,
   styled,
-}                         from '@mui/material';
+}                             from '@mui/material';
 import {
   Lightbulb,
   Notifications,
   Security,
-}                         from '@mui/icons-material';
-import { useAccessToken } from '@hooks/useAccessToken';
-import { useDisclosure }  from '@hooks/useDisclosure';
+}                             from '@mui/icons-material';
+import { useDisclosure }      from '@hooks/useDisclosure';
 import {
   useGetSelfQuery,
   useDeleteSelfMutation
-}                         from '@store/api/selfApi';
-import { IUser }          from '@typings/user';
-import { ModeSwitch }     from '@components/ModeSwitch';
-import { ConfirmModal }   from '@components/ConfirmModal';
-import { MainContainer }  from '../components/MainContainer';
-import { SettingItem }    from './SettingItem';
+}                             from '@store/api/selfApi';
+import { useSignOutMutation } from '@store/api/authApi';
+import { IUser }              from '@typings/user';
+import { ModeSwitch }         from '@components/ModeSwitch';
+import { ConfirmModal }       from '@components/ConfirmModal';
+import { MainContainer }      from '../components/MainContainer';
+import { SettingItem }        from './SettingItem';
 
 export const Settings = () => {
   const { data: self }                                           = useGetSelfQuery();
-  const { setAccessToken }                                       = useAccessToken();
   const user                                                     = self as IUser;
   const [deleteSelf]                                             = useDeleteSelfMutation();
+  const [signOut]                                                = useSignOutMutation();
   const [isConfirmSignOutModalOpen, confirmSignOutModalHandlers] = useDisclosure();
   const [isConfirmDeleteModalOpen, confirmDeleteModalHandlers]   = useDisclosure();
 
@@ -99,7 +99,7 @@ export const Settings = () => {
         title     = "Sign out"
         message   = "Are you sure you want to sign out?"
         onCancel  = {confirmSignOutModalHandlers.close}
-        onConfirm = {() => setAccessToken(null)}
+        onConfirm = {() => signOut()}
       />
 
       <ConfirmModal

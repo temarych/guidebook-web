@@ -1,16 +1,16 @@
 import { useCallback }                  from 'react';
 import { Link, Navigate }               from 'react-router-dom';
+import { useSelector }                  from 'react-redux';
 import { useForm }                      from 'react-hook-form';
 import { z }                            from 'zod';
 import { zodResolver }                  from '@hookform/resolvers/zod';
 import { Stack, TextField, Typography } from '@mui/material';
 import { LoadingButton }                from '@mui/lab';
 import { useSignInMutation }            from '@store/api/authApi';
-import { useGetSelfQuery }              from '@store/api/selfApi';
+import { IAppState }                    from '@store/index';
 import { RtkError }                     from '@typings/error';
-import { useAccessToken }               from '@hooks/useAccessToken';
-import { AuthContainer }                from '@modules/Auth/components/AuthContainer';
 import { Password }                     from '@components/Password';
+import { AuthContainer }                from '../components/AuthContainer';
 
 const signInSchema = z.object({
   email   : z.string().email(),
@@ -20,9 +20,8 @@ const signInSchema = z.object({
 type FormData = z.infer<typeof signInSchema>;
 
 export const SignIn = () => {
-  const { data: self }           = useGetSelfQuery();
-  const { setAccessToken }       = useAccessToken();
-  const [signIn, { isLoading }]  = useSignInMutation();
+  const accessToken             = useSelector((state: IAppState) => state.auth.accessToken);
+  const [signIn, { isLoading }] = useSignInMutation();
 
   const {
     handleSubmit,
@@ -40,9 +39,6 @@ export const SignIn = () => {
   const onSubmit = useCallback(
     (values: FormData) => {
       signIn(values).unwrap()
-        .then(({ accessToken }) => {
-          setAccessToken(accessToken);
-        })
         .catch((error: RtkError) => {
           if (error.data.code === 'user-not-found') {
             setError('email', { message: 'User not found' });
@@ -52,10 +48,10 @@ export const SignIn = () => {
           }
         });
     },
-    [signIn, setError, setAccessToken],
+    [signIn, setError],
   );
 
-  if (self) return <Navigate to="/" />;
+  if (accessToken) return <Navigate to="/" />;
 
   return (
     <AuthContainer title="Sign in">

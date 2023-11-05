@@ -10,8 +10,8 @@ import {
 }                    from 'redux-persist';
 import storage       from 'redux-persist/lib/storage';
 import { modeSlice } from './slices/modeSlice';
-import { api }       from './api';
 import { authSlice } from './slices/authSlice';
+import { api }       from './api';
 
 export const reducers = {
   mode: modeSlice.reducer,
