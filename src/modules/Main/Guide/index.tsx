@@ -82,15 +82,15 @@ export const Guide = () => {
             onToggleFavorite  = {handleToggleFavorite}
           />
         </Stack>
-      
-        <Typography variant="body1">
-          {guide.description}
-        </Typography>
 
         <Grid>
           <Podium
             value   = {guide.likesCount}
             caption = "Likes"
+          />
+          <Podium
+            value   = {0}
+            caption = "Comments"
           />
           <Podium
             value   = {steps.length}
@@ -101,6 +101,10 @@ export const Guide = () => {
             caption = {Intl.DateTimeFormat('en', { month: 'short', day: 'numeric' }).format(guide.createdAt)}
           />
         </Grid>
+
+        <Typography variant="body1">
+          {guide.description}
+        </Typography>
       </MainContainer>
 
       <MainMask>
@@ -131,8 +135,5 @@ const PlayButton = styled(Fab)`
 
 const Grid = styled('div')`
   display              : grid;
-  grid-template-columns: repeat(3, 1fr);
-  border               : 1px solid ${({ theme }) => theme.palette.divider};
-  padding              : ${({ theme }) => theme.spacing(2)};
-  border-radius        : ${({ theme }) => `${theme.shape.borderRadius}px`};
+  grid-template-columns: repeat(4, 1fr);
 `;
