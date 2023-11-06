@@ -22,6 +22,7 @@ import {
 import { useDisclosure }    from '@hooks/useDisclosure';
 import { UserTag }          from '@components/UserTag';
 import { Loader }           from '@components/Loader';
+import { Podium }           from '@components/Podium';
 import { MainContainer }    from '../components/MainContainer';
 import { MainMask }         from '../components/MainMask';
 import { StaticImage }      from '../components/StaticImage';
@@ -85,6 +86,21 @@ export const Guide = () => {
         <Typography variant="body1">
           {guide.description}
         </Typography>
+
+        <Grid>
+          <Podium
+            value   = {guide.likesCount}
+            caption = "Likes"
+          />
+          <Podium
+            value   = {steps.length}
+            caption = "Steps"
+          />
+          <Podium
+            value   = {Intl.DateTimeFormat('en', { year: 'numeric' }).format(guide.createdAt)}
+            caption = {Intl.DateTimeFormat('en', { month: 'short', day: 'numeric' }).format(guide.createdAt)}
+          />
+        </Grid>
       </MainContainer>
 
       <MainMask>
@@ -111,4 +127,12 @@ const PlayButton = styled(Fab)`
   position: absolute;
   right   : 0;
   bottom  : 0;
+`;
+
+const Grid = styled('div')`
+  display              : grid;
+  grid-template-columns: repeat(3, 1fr);
+  border               : 1px solid ${({ theme }) => theme.palette.divider};
+  padding              : ${({ theme }) => theme.spacing(2)};
+  border-radius        : ${({ theme }) => `${theme.shape.borderRadius}px`};
 `;

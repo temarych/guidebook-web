@@ -9,7 +9,11 @@ export type ISearchGuidesResponse = IGuidePreview[];
 export const guideApi = api.injectEndpoints({
   endpoints: builder => ({
     getGuide: builder.query<IGetGuideResponse, string>({
-      query       : (quideId) => `/guides/${quideId}`,
+      query: (quideId)  => `/guides/${quideId}`,
+      transformResponse: (response: IGetGuideResponse) => ({
+        ...response,
+        createdAt: new Date(response.createdAt)
+      }),
       providesTags: ['guide']
     }),
     getSteps: builder.query<IGetStepsResponse, string>({

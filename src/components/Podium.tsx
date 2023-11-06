@@ -1,7 +1,7 @@
 import { Stack, Typography } from '@mui/material';
 
 export interface PodiumProps {
-  value  : string;
+  value  : string | number;
   caption: string;
 }
 

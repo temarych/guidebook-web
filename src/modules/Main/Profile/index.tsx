@@ -35,18 +35,13 @@ export const Profile = () => {
       title     = "Profile"
       spacing   = {4}
       rightSlot = {(
-        <IconButton>
+        <IconButton size="large">
           <Edit />
         </IconButton>
       )}
     >
       <Card variant="outlined">
-        <UserPreview
-          {...user}
-          guidesCount     = {0}
-          guidebooksCount = {0}
-          likesCount      = {0}
-        />
+        <UserPreview {...user} guidebooksCount={0} />
       </Card>
 
       <Stack spacing={2}>
@@ -58,8 +53,8 @@ export const Profile = () => {
               onChange = {(_, value) => setTab(value)}
               sx       = {{ borderBottom: 1, borderColor: 'divider' }}
             >
-              <Tab value="guides" label="Guides" />
-              <Tab value="guidebooks" label="Guidebooks" />
+              <Tab value="guides" label="Guides" sx={{ flex: 1 }} />
+              <Tab value="guidebooks" label="Guidebooks" sx={{ flex: 1 }} />
             </TabList>
 
             <TabPanel value="guides" sx={{ p: 0 }}>

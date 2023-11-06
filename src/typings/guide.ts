@@ -14,4 +14,6 @@ export interface IGuide {
   authorId   : string;
   author     : { username: string };
   isFavorite : boolean;
+  likesCount : number;
+  createdAt  : Date;
 }
